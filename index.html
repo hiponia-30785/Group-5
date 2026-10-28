@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TindaTrack | Store Management System</title>
+
+    <!-- Connect the CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         MAIN APPLICATION CONTAINER
+    ========================================== -->
+    <div class="app-container">
+
+
+        <!-- =====================================
+             LEFT SIDEBAR
+        ====================================== -->
+        <aside class="sidebar">
+
+            <!-- LOGO AND BRAND NAME -->
+            <div class="logo-container">
+
+                <div class="logo-placeholder">
+
+          <img
+          src="TT logo.png"
+          alt="TindaTrack Logo"
+          class="store-logo"
+          width="46"
+          height="46"
+          >
+
+                    <!-- END OF LOGO INSERTION AREA -->
+
+                </div>
+
+                <!-- Application Name -->
+                <div class="brand">
+                    <h2>TindaTrack</h2>
+                    <p>Your trusted Store Management</p>
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 SIDEBAR NAVIGATION
+            ====================================== -->
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN MENU</p>
+
+                <a href="index.html" class="nav-link active">
+                    Dashboard
+                </a>
+
+                <a href="inventory.html" class="nav-link">
+                    Inventory
+                </a>
+
+                <a href="sales.html" class="nav-link">
+                    Daily Sales
+                </a>
+
+                <a href="expenses.html" class="nav-link">
+                    Expenses
+                </a>
+
+                <a href="utang.html" class="nav-link">
+                    Utang Watch
+                </a>
+
+                <a href="expiry.html" class="nav-link">
+                    Expiry Guard
+                </a>
+            </nav>
+
+
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-footer">
+                <p>Bawat Benta, Bantay-Sarado!</p>
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================
+             MAIN DASHBOARD CONTENT
+        ====================================== -->
+        <main class="main-content">
+
+
+            <!-- TOP HEADER -->
+            <header class="top-header">
+
+                <div class="header-title">
+                    <h1>Dashboard</h1>
+
+                    <p>
+                        Welcome to your sari-sari store management system.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <!-- Current Date -->
+                    <span id="current-date"></span>
+
+<!-- Store Name Display -->
+<div class="store-owner">
+    <span class="owner-label">My Sari-Sari Store</span>
+</div>
+                </div>
+
+            </header>
+
+
+            <!-- =====================================
+                 WELCOME SECTION
+            ====================================== -->
+            <section class="welcome-section">
+
+                <div>
+                    <h2>Store Overview</h2>
+
+                    <p>
+                        Monitor your sales, inventory, and customer balances.
+                    </p>
+                </div>
+
+                <!-- Go to Daily Sales -->
+                <a href="sales.html" class="primary-button">
+                    + Record a Sale
+                </a>
+
+            </section>
+
+
+            <!-- =====================================
+                 DASHBOARD SUMMARY CARDS
+            ====================================== -->
+            <section class="summary-grid">
+
+
+                <!-- TODAY'S SALES -->
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Today's Sales</h3>
+                    </div>
+
+                    <p class="summary-value" id="today-sales">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Total recorded sales for today
+                    </p>
+
+                </article>
+
+
+                <!-- ESTIMATED GROSS PROFIT -->
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Estimated Gross Profit</h3>
+                    </div>
+
+                    <p class="summary-value" id="gross-profit">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Sales minus the cost of sold products
+                    </p>
+
+                </article>
+
+
+                <!-- MONEY IN STORE -->
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Money in Store</h3>
+                    </div>
+
+                    <p class="summary-value" id="money-in-store">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Recorded cash available
+                    </p>
+
+                </article>
+
+
+                <!-- CUSTOMERS OWE -->
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Customers Owe</h3>
+                    </div>
+
+                    <p class="summary-value" id="customers-owe">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Outstanding customer balances
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- =====================================
+                 INVENTORY AND RECENT SALES
+            ====================================== -->
+            <section class="dashboard-grid">
+
+
+                <!-- INVENTORY OVERVIEW -->
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Inventory Overview</h2>
+
+                            <p>
+                                Check your current product stocks.
+                            </p>
+                        </div>
+
+                        <a href="inventory.html" class="text-link">
+                            View Inventory
+                        </a>
+
+                    </div>
+
+
+                    <!-- INVENTORY SEARCH -->
+                    <div class="search-container">
+
+                        <input
+                            type="search"
+                            id="inventory-search"
+                            placeholder="Search product name..."
+                            aria-label="Search inventory products"
+                        >
+
+                    </div>
+
+
+                    <!-- INVENTORY TABLE -->
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Selling Price</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="inventory-table-body">
+
+                                <tr>
+                                    <td colspan="4">
+                                        No products added yet.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT SALES -->
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Recent Sales</h2>
+
+                            <p>
+                                Review your latest transactions.
+                            </p>
+                        </div>
+
+                        <a href="sales.html" class="text-link">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <!-- RECENT SALES TABLE -->
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recent-sales-body">
+
+                                <tr>
+                                    <td colspan="3">
+                                        No sales recorded yet.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 STORE ALERTS
+            ====================================== -->
+            <section class="content-card alerts-section">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Store Alerts</h2>
+
+                        <p>
+                            Important reminders about your store.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- ALERT LIST -->
+                <div class="alert-list" id="store-alerts">
+
+
+                    <!-- LOW STOCK ALERT -->
+                    <div class="alert-item">
+
+                        <div>
+                            <h4>Low Stock Alert</h4>
+
+                            <p>
+                                Products with low quantities will appear here.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXPIRATION ALERT -->
+                    <div class="alert-item">
+
+                        <div>
+                            <h4>Expiration Alert</h4>
+
+                            <p>
+                                Products nearing their expiration dates
+                                will appear here.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- CUSTOMER DEBT ALERT -->
+                    <div class="alert-item">
+
+                        <div>
+                            <h4>Unpaid Customer Balances</h4>
+
+                            <p>
+                                Outstanding customer debts will appear here.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 FOOTER
+            ====================================== -->
+            <footer class="main-footer">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    TindaTrack. Smart Sari-Sari Store Management System.
+                </p>
+
+            </footer>
+
+
+        </main>
+        <!-- END OF MAIN DASHBOARD CONTENT -->
+
+
+    </div>
+    <!-- END OF MAIN APPLICATION CONTAINER -->
+
+
+    <!-- Connect the JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

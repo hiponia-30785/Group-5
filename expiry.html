@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expiry Guard | TindaTrack</title>
+
+    <!-- Connect to the existing CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <!-- LOGO SECTION -->
+            <div class="logo-container">
+
+                <div class="logo-placeholder">
+
+                    <!-- INSERT YOUR LOGO HERE -->
+                    <!-- Save your logo as images/logo.png -->
+
+                    <img
+                        src="TT logo.png"
+                        alt="TindaTrack Logo"
+                        class="store-logo"
+                        width="46"
+                        height="46"
+                    >
+
+                </div>
+
+                <div class="brand">
+                    <h2>TindaTrack</h2>
+                    <p>Your trusted Store Management</p>
+                </div>
+
+            </div>
+
+            <!-- NAVIGATION -->
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN MENU</p>
+
+                <a href="index.html" class="nav-link">
+                    Dashboard
+                </a>
+
+                <a href="inventory.html" class="nav-link">
+                    Inventory
+                </a>
+
+                <a href="sales.html" class="nav-link">
+                    Daily Sales
+                </a>
+
+                <a href="expenses.html" class="nav-link">
+                    Expenses
+                </a>
+
+                <a href="utang.html" class="nav-link">
+                    Utang Watch
+                </a>
+
+                <a href="expiry.html" class="nav-link active">
+                    Expiry Guard
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Bawat Benta, Bantay-Sarado!</p>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- PAGE HEADER -->
+            <header class="top-header">
+
+                <div class="header-title">
+
+                    <h1>Expiry Guard</h1>
+
+                    <p>
+                        Monitor expiration dates and protect your store inventory.
+                    </p>
+
+                </div>
+
+                <div class="header-actions">
+
+                    <span id="current-date"></span>
+
+<!-- Store Name Display -->
+<div class="store-owner">
+    <span class="owner-label">My Sari-Sari Store</span>
+</div>
+                </div>
+
+            </header>
+
+
+            <!-- EXPIRATION SUMMARY -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Expired Products</h3>
+                    </div>
+
+                    <p class="summary-value" id="expired-count">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Products past their expiration date
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Expiring Soon</h3>
+                    </div>
+
+                    <p class="summary-value" id="expiring-soon-count">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Products expiring within 30 days
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Safe Stock</h3>
+                    </div>
+
+                    <p class="summary-value" id="safe-stock-count">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Products with more than 30 days remaining
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Products Without Expiry Date</h3>
+                    </div>
+
+                    <p class="summary-value" id="no-expiry-count">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Products without a recorded expiration date
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- EXPIRATION NOTICE -->
+            <section class="content-card expiry-notice">
+
+                <div class="expiry-notice-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <h3>Expiration Monitoring</h3>
+
+                    <p>
+                        Check expired products before selling them. Remove expired
+                        goods from sale according to your store's safety procedures.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- EXPIRY INVENTORY -->
+            <section class="content-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Product Expiration List</h2>
+
+                        <p>
+                            Review products based on their expiration dates.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="refresh-expiry">
+
+                        Refresh List
+
+                    </button>
+
+                </div>
+
+
+                <!-- SEARCH AND FILTER -->
+                <div class="sales-toolbar">
+
+                    <div class="form-group">
+
+                        <label for="search-expiry">
+                            Search Product
+                        </label>
+
+                        <input
+                            type="search"
+                            id="search-expiry"
+                            placeholder="Enter product name">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="filter-expiry-status">
+                            Expiration Status
+                        </label>
+
+                        <select id="filter-expiry-status">
+
+                            <option value="all">
+                                All Products
+                            </option>
+
+                            <option value="expired">
+                                Expired
+                            </option>
+
+                            <option value="soon">
+                                Expiring Soon
+                            </option>
+
+                            <option value="safe">
+                                Safe Stock
+                            </option>
+
+                            <option value="none">
+                                No Expiration Date
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="expiry-sort">
+                            Sort By
+                        </label>
+
+                        <select id="expiry-sort">
+
+                            <option value="nearest">
+                                Nearest Expiration
+                            </option>
+
+                            <option value="name">
+                                Product Name
+                            </option>
+
+                            <option value="quantity">
+                                Highest Quantity
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXPIRATION TABLE -->
+                <div class="table-container">
+
+                    <table class="sales-table expiry-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Expiration Date</th>
+                                <th>Days Remaining</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="expiry-table-body">
+                            <!-- JavaScript inserts inventory records here -->
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- EMPTY STATE -->
+                <div
+                    id="empty-expiry"
+                    class="empty-state"
+                    hidden>
+
+                    <h3>No Products Found</h3>
+
+                    <p>
+                        Try changing your search or expiration filters.
+                    </p>
+
+                </div>
+
+
+                <div class="inventory-table-footer">
+
+                    <p>
+                        Products displayed:
+                        <strong id="displayed-expiry">0</strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="main-footer">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    TindaTrack. Smart Sari-Sari Store Management System.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- EXPIRY GUARD JAVASCRIPT -->
+    <script src="js/expiry.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventory | TindaTrack</title>
+
+    <!-- Connect the existing stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+        <aside class="sidebar">
+
+            <!-- LOGO SECTION -->
+            <div class="logo-container">
+
+                <div class="logo-placeholder">
+
+                    <!-- INSERT YOUR LOGO HERE -->
+                    <!-- Place your logo at images/logo.png -->
+
+                    <img
+                        src="TT logo.png"
+                        alt="TindaTrack Logo"
+                        class="store-logo"
+                        width="46"
+                        height="46"
+                    >
+
+                </div>
+
+                <div class="brand">
+                    <h2>TindaTrack</h2>
+                    <p>Your trusted Store Management</p>
+                </div>
+
+            </div>
+
+            <!-- NAVIGATION LINKS -->
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN MENU</p>
+
+                <a href="index.html" class="nav-link">
+                    Dashboard
+                </a>
+
+                <a href="inventory.html" class="nav-link active">
+                    Inventory
+                </a>
+
+                <a href="sales.html" class="nav-link">
+                    Daily Sales
+                </a>
+
+                <a href="expenses.html" class="nav-link">
+                    Expenses
+                </a>
+
+                <a href="utang.html" class="nav-link">
+                    Utang Watch
+                </a>
+
+                <a href="expiry.html" class="nav-link">
+                    Expiry Guard
+                </a>
+            </nav>
+
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-footer">
+                <p>Bawat Benta, Bantay-Sarado!</p>
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN INVENTORY CONTENT
+        ========================================== -->
+        <main class="main-content">
+
+            <!-- PAGE HEADER -->
+            <header class="top-header">
+
+                <div class="header-title">
+                    <h1>Inventory</h1>
+
+                    <p>
+                        Manage your products, stock quantities,
+                        prices, and expiration dates.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <span id="current-date"></span>
+
+<!-- Store Name Display -->
+<div class="store-owner">
+    <span class="owner-label">My Sari-Sari Store</span>
+</div>
+                </div>
+
+            </header>
+
+
+            <!-- =====================================
+                 INVENTORY SUMMARY
+            ====================================== -->
+            <section class="summary-grid inventory-summary">
+
+                <!-- TOTAL PRODUCTS -->
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Total Products</h3>
+                    </div>
+
+                    <p class="summary-value" id="total-products">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Different products in inventory
+                    </p>
+
+                </article>
+
+
+                <!-- TOTAL STOCK UNITS -->
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Total Stock Units</h3>
+                    </div>
+
+                    <p class="summary-value" id="total-stock">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Total quantity of all products
+                    </p>
+
+                </article>
+
+
+                <!-- LOW STOCK -->
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Low Stock</h3>
+                    </div>
+
+                    <p class="summary-value" id="low-stock-count">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Products needing restocking
+                    </p>
+
+                </article>
+
+
+                <!-- INVENTORY COST VALUE -->
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Inventory Cost Value</h3>
+                    </div>
+
+                    <p class="summary-value" id="inventory-value">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Total quantity multiplied by cost
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- =====================================
+                 ADD PRODUCT FORM
+            ====================================== -->
+            <section class="content-card inventory-form-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2 id="form-title">Add New Product</h2>
+
+                        <p>
+                            Enter the product details below.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="product-form">
+
+                    <!-- Hidden field used when editing a product -->
+                    <input type="hidden" id="product-id">
+
+
+                    <div class="inventory-form-grid">
+
+                        <!-- PRODUCT NAME -->
+                        <div class="form-group">
+
+                            <label for="product-name">
+                                Product Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="product-name"
+                                name="product_name"
+                                placeholder="e.g. Instant Noodles"
+                                maxlength="100"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- QUANTITY -->
+                        <div class="form-group">
+
+                            <label for="product-quantity">
+                                Quantity in Stock
+                            </label>
+
+                            <input
+                                type="number"
+                                id="product-quantity"
+                                name="quantity"
+                                placeholder="e.g. 50"
+                                min="0"
+                                step="1"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- COST PER ITEM -->
+                        <div class="form-group">
+
+                            <label for="product-cost">
+                                Cost per Item (₱)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="product-cost"
+                                name="cost"
+                                placeholder="e.g. 8.00"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- SELLING PRICE -->
+                        <div class="form-group">
+
+                            <label for="product-price">
+                                Selling Price (₱)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="product-price"
+                                name="selling_price"
+                                placeholder="e.g. 10.00"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- EXPIRATION DATE -->
+                        <div class="form-group">
+
+                            <label for="product-expiration">
+                                Expiration Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="product-expiration"
+                                name="expiration_date"
+                            >
+
+                            <small>
+                                Leave blank if the product has no expiration date.
+                            </small>
+
+                        </div>
+
+
+                        <!-- LOW STOCK THRESHOLD -->
+                        <div class="form-group">
+
+                            <label for="product-threshold">
+                                Low Stock Alert Level
+                            </label>
+
+                            <input
+                                type="number"
+                                id="product-threshold"
+                                name="low_stock_threshold"
+                                value="10"
+                                min="0"
+                                step="1"
+                                required
+                            >
+
+                            <small>
+                                Alert when stock reaches this quantity.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM BUTTONS -->
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                            id="save-product-button">
+
+                            Add Product
+
+                        </button>
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="cancel-edit-button"
+                            hidden>
+
+                            Cancel Edit
+
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="secondary-button"
+                            id="clear-form-button">
+
+                            Clear Form
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- =====================================
+                 INVENTORY LIST
+            ====================================== -->
+            <section class="content-card inventory-list-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Product Inventory</h2>
+
+                        <p>
+                            Search, filter, edit, and manage your products.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH AND FILTER -->
+                <div class="inventory-toolbar">
+
+                    <div class="inventory-search">
+
+                        <label for="search-product">
+                            Search Products
+                        </label>
+
+                        <input
+                            type="search"
+                            id="search-product"
+                            placeholder="Search by product name..."
+                        >
+
+                    </div>
+
+
+                    <div class="inventory-filter">
+
+                        <label for="stock-filter">
+                            Filter by Stock
+                        </label>
+
+                        <select id="stock-filter">
+
+                            <option value="all">
+                                All Products
+                            </option>
+
+                            <option value="in-stock">
+                                In Stock
+                            </option>
+
+                            <option value="low-stock">
+                                Low Stock
+                            </option>
+
+                            <option value="out-of-stock">
+                                Out of Stock
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INVENTORY TABLE -->
+                <div class="table-container">
+
+                    <table class="inventory-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Cost / Item</th>
+                                <th>Selling Price</th>
+                                <th>Expiration Date</th>
+                                <th>Stock Value</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="inventory-table-body">
+
+                            <!-- JavaScript displays products here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- EMPTY STATE -->
+                <div id="empty-inventory" class="empty-state" hidden>
+
+                    <h3>No Products Found</h3>
+
+                    <p>
+                        Add a product using the form above,
+                        or change your search and filter.
+                    </p>
+
+                </div>
+
+
+                <!-- TABLE FOOTER -->
+                <div class="inventory-table-footer">
+
+                    <p>
+                        Products displayed:
+                        <strong id="displayed-products">0</strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 INVENTORY NOTES
+            ====================================== -->
+            <section class="content-card inventory-notes">
+
+                <h2>Inventory Reminders</h2>
+
+                <ul>
+                    <li>
+                        Check low-stock products regularly.
+                    </li>
+
+                    <li>
+                        Review expiration dates before selling products.
+                    </li>
+
+                    <li>
+                        Enter the correct purchase cost and selling price.
+                    </li>
+
+                    <li>
+                        Update stock quantities whenever new supplies arrive.
+                    </li>
+                </ul>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="main-footer">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    TindaTrack. Smart Sari-Sari Store Management System.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+         INVENTORY JAVASCRIPT
+    ========================================== -->
+    <script src="js/inventory.js"></script>
+
+</body>
+</html>

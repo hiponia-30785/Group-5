@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Utang Watch | TindaTrack</title>
+
+    <!-- Connect to the existing CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <!-- LOGO SECTION -->
+            <div class="logo-container">
+
+                <div class="logo-placeholder">
+
+                    <!-- INSERT YOUR LOGO HERE -->
+                    <!-- Put your logo in the images folder as logo.png -->
+
+                    <img
+                        src="TT logo.png"
+                        alt="TindaTrack Logo"
+                        class="store-logo"
+                        width="46"
+                        height="46"
+                    >
+
+                </div>
+
+                <div class="brand">
+                    <h2>TindaTrack</h2>
+                    <p>Your Trusted Store Management</p>
+                </div>
+
+            </div>
+
+            <!-- NAVIGATION -->
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN MENU</p>
+
+                <a href="index.html" class="nav-link">
+                    Dashboard
+                </a>
+
+                <a href="inventory.html" class="nav-link">
+                    Inventory
+                </a>
+
+                <a href="sales.html" class="nav-link">
+                    Daily Sales
+                </a>
+
+                <a href="expenses.html" class="nav-link">
+                    Expenses
+                </a>
+
+                <a href="utang.html" class="nav-link active">
+                    Utang Watch
+                </a>
+
+                <a href="expiry.html" class="nav-link">
+                    Expiry Guard
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Bawat Benta, Bawat Piso, Bantay-Sarado!</p>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- PAGE HEADER -->
+            <header class="top-header">
+
+                <div class="header-title">
+                    <h1>Utang Watch</h1>
+
+                    <p>
+                        Monitor customer debts and record payments.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <span id="current-date"></span>
+<!-- Store Name Display -->
+<div class="store-owner">
+    <span class="owner-label">My Sari-Sari Store</span>
+</div>
+                </div>
+
+            </header>
+
+
+            <!-- DEBT SUMMARY -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Total Outstanding Utang</h3>
+                    </div>
+
+                    <p class="summary-value" id="total-utang">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Remaining balances of customers
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Customers with Utang</h3>
+                    </div>
+
+                    <p class="summary-value" id="utang-customer-count">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Customers with unpaid balances
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Payments Collected Today</h3>
+                    </div>
+
+                    <p class="summary-value" id="utang-payments-today">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Debt payments recorded today
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Fully Paid Sales</h3>
+                    </div>
+
+                    <p class="summary-value" id="fully-paid-debts">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Sales with no remaining balance
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- RECORD DEBT PAYMENT -->
+            <section class="content-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Record a Debt Payment</h2>
+
+                        <p>
+                            Select a customer transaction and enter the amount received.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="utang-payment-form">
+
+                    <div class="sales-form-grid">
+
+                        <!-- CUSTOMER TRANSACTION -->
+                        <div class="form-group">
+
+                            <label for="utang-sale">
+                                Customer / Transaction
+                            </label>
+
+                            <select id="utang-sale" required>
+
+                                <option value="">
+                                    Select an unpaid transaction
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- CUSTOMER NAME -->
+                        <div class="form-group">
+
+                            <label for="utang-customer">
+                                Customer Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="utang-customer"
+                                readonly
+                                placeholder="Select a transaction">
+
+                        </div>
+
+
+                        <!-- REMAINING BALANCE -->
+                        <div class="form-group">
+
+                            <label for="utang-current-balance">
+                                Current Balance (₱)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="utang-current-balance"
+                                readonly
+                                value="0.00">
+
+                        </div>
+
+
+                        <!-- PAYMENT AMOUNT -->
+                        <div class="form-group">
+
+                            <label for="utang-payment-amount">
+                                Payment Received (₱)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="utang-payment-amount"
+                                min="0.01"
+                                step="0.01"
+                                placeholder="0.00"
+                                required>
+
+                        </div>
+
+
+                        <!-- PAYMENT DATE -->
+                        <div class="form-group">
+
+                            <label for="utang-payment-date">
+                                Payment Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="utang-payment-date"
+                                required>
+
+                        </div>
+
+
+                        <!-- NOTES -->
+                        <div class="form-group">
+
+                            <label for="utang-payment-notes">
+                                Notes (Optional)
+                            </label>
+
+                            <input
+                                type="text"
+                                id="utang-payment-notes"
+                                maxlength="250"
+                                placeholder="e.g. Partial payment">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT PREVIEW -->
+                    <div class="payment-section">
+
+                        <h3>Payment Summary</h3>
+
+                        <div class="sales-form-grid">
+
+                            <div class="form-group">
+
+                                <label for="utang-payment-preview">
+                                    Amount to Receive (₱)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="utang-payment-preview"
+                                    readonly
+                                    value="0.00">
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="utang-new-balance">
+                                    Remaining Balance After Payment (₱)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="utang-new-balance"
+                                    readonly
+                                    value="0.00">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="primary-button">
+
+                            Save Payment
+
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="secondary-button"
+                            id="clear-utang-form">
+
+                            Clear Form
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- CUSTOMERS WITH UNPAID BALANCES -->
+            <section class="content-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Outstanding Customer Debts</h2>
+
+                        <p>
+                            View customers who still have unpaid balances.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH -->
+                <div class="sales-toolbar">
+
+                    <div class="form-group">
+
+                        <label for="search-utang">
+                            Search Customer
+                        </label>
+
+                        <input
+                            type="search"
+                            id="search-utang"
+                            placeholder="Enter customer or product name">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="filter-utang">
+                            Filter
+                        </label>
+
+                        <select id="filter-utang">
+
+                            <option value="unpaid">
+                                Unpaid Transactions
+                            </option>
+
+                            <option value="all">
+                                All Transactions
+                            </option>
+
+                            <option value="paid">
+                                Fully Paid Transactions
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DEBT TABLE -->
+                <div class="table-container">
+
+                    <table class="sales-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Sale Date</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Total Amount</th>
+                                <th>Amount Paid</th>
+                                <th>Balance</th>
+                                <th>Status</th>
+                                <th>Payment History</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="utang-table-body">
+                            <!-- JavaScript inserts transactions here -->
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    id="empty-utang"
+                    class="empty-state"
+                    hidden>
+
+                    <h3>No Transactions Found</h3>
+
+                    <p>
+                        Transactions with outstanding balances will appear here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- PAYMENT HISTORY -->
+            <section class="content-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Debt Payment History</h2>
+
+                        <p>
+                            Review payments collected from customers.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table class="sales-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Payment Date</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Amount Received</th>
+                                <th>Notes</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="utang-history-body">
+                            <!-- JavaScript inserts payment history here -->
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    id="empty-utang-history"
+                    class="empty-state"
+                    hidden>
+
+                    <h3>No Payments Recorded</h3>
+
+                    <p>
+                        Payments recorded through this page will appear here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="main-footer">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    TindaTrack. Smart Sari-Sari Store Management System.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- UTANG WATCH JAVASCRIPT -->
+    <script src="js/utang.js"></script>
+
+</body>
+
+</html>

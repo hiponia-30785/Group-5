@@ -1,0 +1,1877 @@
+/* =========================================
+   TINDATRACK
+   Smart Sari-Sari Store Management System
+   Main Stylesheet
+========================================= */
+
+
+/* =========================================
+   1. GENERAL SETTINGS
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #176b45;
+    --primary-dark: #104c32;
+    --primary-light: #e8f5ed;
+
+    --background-color: #f5f7f6;
+    --white-color: #ffffff;
+
+    --text-color: #26352c;
+    --muted-color: #78847d;
+
+    --border-color: #e1e8e3;
+
+    --success-color: #208454;
+    --warning-color: #d99518;
+    --danger-color: #d94343;
+
+    --sidebar-width: 250px;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   2. MAIN APPLICATION LAYOUT
+
+   Keeps the sidebar on the left and
+   dashboard content on the right.
+========================================= */
+
+.app-container {
+    display: flex;
+    align-items: flex-start;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   3. LEFT SIDEBAR
+========================================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: var(--sidebar-width);
+    padding: 24px 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--white-color);
+    border-right: 1px solid var(--border-color);
+
+    overflow-y: auto;
+    z-index: 100;
+}
+
+
+/* =========================================
+   4. LOGO AND BRAND NAME
+========================================= */
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 8px 24px;
+
+    border-bottom: 1px solid var(--border-color);
+
+    flex-shrink: 0;
+}
+
+
+/* Logo Image Container */
+
+.logo-placeholder {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--white-color);
+    border-radius: 10px;
+
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+
+/* Your Uploaded Logo */
+
+.store-logo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    display: block;
+}
+
+
+/* Brand Name */
+
+.brand {
+    min-width: 0;
+}
+
+.brand h2 {
+    color: var(--primary-color);
+
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.brand p {
+    color: var(--muted-color);
+    font-size: 11px;
+}
+
+
+/* =========================================
+   5. SIDEBAR NAVIGATION
+
+   Navigation appears directly below the logo.
+========================================= */
+
+.navigation {
+    display: block;
+    width: 100%;
+
+    margin-top: 22px;
+
+    flex-shrink: 0;
+}
+
+
+/* Navigation Category Headings */
+
+.nav-heading {
+    margin: 20px 12px 10px;
+
+    color: #9aa59e;
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-heading:first-child {
+    margin-top: 0;
+}
+
+
+/* Navigation Links */
+
+.nav-link {
+    display: block;
+    width: 100%;
+
+    padding: 11px 14px;
+    margin-bottom: 5px;
+
+    border-radius: 8px;
+
+    color: #526158;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* Hover Effect */
+
+.nav-link:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+
+/* Active Navigation Link */
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   6. SIDEBAR FOOTER
+========================================= */
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 25px 8px 5px;
+
+    color: var(--muted-color);
+
+    font-size: 11px;
+    text-align: center;
+}
+
+
+/* =========================================
+   7. MAIN DASHBOARD CONTENT
+
+   Prevents the dashboard from appearing
+   underneath or behind the sidebar.
+========================================= */
+
+.main-content {
+    display: block;
+
+    width: calc(100% - var(--sidebar-width));
+    min-width: 0;
+
+    margin-left: var(--sidebar-width);
+    padding: 30px;
+
+    align-self: flex-start;
+}
+
+
+/* =========================================
+   8. TOP HEADER
+========================================= */
+
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+    flex-wrap: wrap;
+
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+
+/* Dashboard Heading */
+
+.header-title h1 {
+    color: var(--text-color);
+
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.header-title p {
+    margin-top: 4px;
+
+    color: var(--muted-color);
+    font-size: 13px;
+}
+
+
+/* Header Right Side */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+
+/* Current Date */
+
+#current-date {
+    color: var(--muted-color);
+    font-size: 12px;
+}
+
+
+/* Store Owner Button */
+
+.profile-button {
+    padding: 10px 16px;
+
+    background-color: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: bold;
+
+    transition: 0.2s ease;
+}
+
+.profile-button:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+
+/* =========================================
+   9. WELCOME SECTION
+========================================= */
+
+.welcome-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+.welcome-section h2 {
+    margin-bottom: 3px;
+
+    font-size: 19px;
+}
+
+.welcome-section p {
+    color: var(--muted-color);
+    font-size: 12px;
+}
+
+
+/* Record Sale Button */
+
+.primary-button {
+    display: inline-block;
+
+    padding: 11px 18px;
+
+    background-color: var(--primary-color);
+    color: var(--white-color);
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    transition: background-color 0.2s ease;
+}
+
+.primary-button:hover {
+    background-color: var(--primary-dark);
+}
+
+
+/* =========================================
+   10. SUMMARY CARDS
+========================================= */
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    width: 100%;
+    margin-bottom: 28px;
+}
+
+
+/* Individual Summary Card */
+
+.summary-card {
+    min-width: 0;
+
+    padding: 22px 20px;
+
+    background-color: var(--white-color);
+
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Card Hover */
+
+.summary-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+
+/* Card Heading */
+
+.card-heading {
+    margin-bottom: 16px;
+}
+
+.card-heading h3 {
+    color: var(--muted-color);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* Card Amount */
+
+.summary-value {
+    margin-bottom: 8px;
+
+    color: var(--primary-color);
+
+    font-size: 25px;
+    font-weight: bold;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* Card Description */
+
+.card-description {
+    color: var(--muted-color);
+    font-size: 11px;
+}
+
+
+/* =========================================
+   11. INVENTORY AND SALES LAYOUT
+========================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(0, 1fr);
+
+    gap: 22px;
+
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   12. CONTENT CARDS
+========================================= */
+
+.content-card {
+    min-width: 0;
+    padding: 22px;
+
+    background-color: var(--white-color);
+
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+
+/* Section Header */
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+    flex-wrap: wrap;
+
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    margin-bottom: 3px;
+
+    font-size: 16px;
+}
+
+.section-header p {
+    color: var(--muted-color);
+    font-size: 11px;
+}
+
+
+/* View Links */
+
+.text-link {
+    color: var(--primary-color);
+
+    font-size: 12px;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.text-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   13. INVENTORY SEARCH
+========================================= */
+
+.search-container {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 11px 14px;
+
+    background-color: #fafcfb;
+
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+
+    outline: none;
+
+    transition: border-color 0.2s ease;
+}
+
+.search-container input:focus {
+    border-color: var(--primary-color);
+}
+
+.search-container input::placeholder {
+    color: #9aa59e;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   14. TABLES
+========================================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+    text-align: left;
+}
+
+
+/* Table Header */
+
+thead {
+    background-color: #f7f9f8;
+}
+
+th {
+    padding: 12px 10px;
+
+    color: var(--muted-color);
+
+    font-size: 10px;
+    font-weight: bold;
+
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+
+    white-space: nowrap;
+}
+
+
+/* Table Body */
+
+td {
+    padding: 14px 10px;
+
+    border-bottom: 1px solid #edf1ee;
+
+    color: var(--text-color);
+    font-size: 12px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #fafcfb;
+}
+
+
+/* Empty Table Message */
+
+td[colspan] {
+    padding: 30px 10px;
+
+    color: var(--muted-color);
+    text-align: center;
+}
+
+
+/* =========================================
+   15. PRODUCT STATUS LABELS
+========================================= */
+
+.status {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.status-in-stock {
+    background-color: #e6f6ec;
+    color: #208454;
+}
+
+.status-low-stock {
+    background-color: #fff3d9;
+    color: #a76a00;
+}
+
+.status-out-of-stock {
+    background-color: #fde8e8;
+    color: #c52d2d;
+}
+
+.status-expiring {
+    background-color: #fff3d9;
+    color: #a76a00;
+}
+
+
+/* =========================================
+   16. STORE ALERTS
+========================================= */
+
+.alerts-section {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+
+/* Alert List */
+
+.alert-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* Individual Alert */
+
+.alert-item {
+    padding: 15px;
+
+    background-color: #fafcfb;
+
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.alert-item h4 {
+    margin-bottom: 4px;
+
+    font-size: 12px;
+}
+
+.alert-item p {
+    color: var(--muted-color);
+    font-size: 11px;
+}
+
+
+/* =========================================
+   17. FOOTER
+========================================= */
+
+.main-footer {
+    width: 100%;
+    padding: 20px 0 5px;
+
+    color: var(--muted-color);
+
+    font-size: 11px;
+    text-align: center;
+}
+
+
+/* =========================================
+   18. TABLET RESPONSIVE DESIGN
+========================================= */
+
+@media screen and (max-width: 1100px) {
+
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-content {
+        padding: 24px;
+    }
+
+}
+
+
+/* =========================================
+   19. SMALL LAPTOPS AND TABLETS
+========================================= */
+
+@media screen and (max-width: 768px) {
+
+    :root {
+        --sidebar-width: 200px;
+    }
+
+    .sidebar {
+        padding: 20px 12px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .header-title h1 {
+        font-size: 23px;
+    }
+
+    .summary-value {
+        font-size: 21px;
+    }
+
+    .logo-container {
+        gap: 8px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .brand h2 {
+        font-size: 18px;
+    }
+
+}
+
+
+/* =========================================
+   20. MOBILE RESPONSIVE DESIGN
+========================================= */
+
+@media screen and (max-width: 560px) {
+
+    .app-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .sidebar {
+        position: relative;
+        top: auto;
+        left: auto;
+        bottom: auto;
+
+        width: 100%;
+        min-width: 0;
+
+        padding: 16px;
+
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+
+        overflow: visible;
+    }
+
+    .logo-container {
+        padding-bottom: 15px;
+    }
+
+    .navigation {
+        margin-top: 15px;
+    }
+
+    .nav-heading {
+        margin-top: 12px;
+    }
+
+    .nav-link {
+        padding: 10px 12px;
+    }
+
+    .sidebar-footer {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+
+    .main-content {
+        width: 100%;
+        min-width: 0;
+
+        margin-left: 0;
+        padding: 18px 14px;
+    }
+
+    .top-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .summary-card {
+        padding: 18px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .content-card {
+        padding: 16px;
+    }
+
+    .welcome-section {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .primary-button {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+/* FIX: Keep the logo from expanding across the page */
+
+.sidebar {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.logo-container {
+    width: 100%;
+    min-width: 0;
+}
+
+.logo-placeholder {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    max-width: 46px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.logo-placeholder img,
+.store-logo {
+    display: block;
+    width: 46px !important;
+    height: 46px !important;
+    max-width: 46px !important;
+    max-height: 46px !important;
+    object-fit: contain;
+}
+
+.main-content {
+    width: calc(100% - 250px);
+    min-width: 0;
+    margin-left: 250px;
+    padding: 30px;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    min-width: 0;
+}
+
+/* =========================================
+   INVENTORY PAGE STYLES
+========================================= */
+
+/* Inventory Form Card */
+
+.inventory-form-card {
+    margin-bottom: 25px;
+}
+
+
+/* Product Form Layout */
+
+.inventory-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* Form Groups */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.form-group label,
+.inventory-search label,
+.inventory-filter label {
+    margin-bottom: 7px;
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.form-group input,
+.inventory-search input,
+.inventory-filter select {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+
+    color: var(--text-color);
+    outline: none;
+}
+
+.form-group input:focus,
+.inventory-search input:focus,
+.inventory-filter select:focus {
+    border-color: var(--primary-color);
+}
+
+.form-group small {
+    margin-top: 5px;
+    color: var(--muted-color);
+    font-size: 10px;
+}
+
+
+/* Form Buttons */
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.secondary-button {
+    padding: 11px 18px;
+
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.secondary-button:hover {
+    background-color: #f0f4f1;
+}
+
+
+/* Inventory List */
+
+.inventory-list-card {
+    margin-bottom: 25px;
+}
+
+
+/* Search and Filter Toolbar */
+
+.inventory-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.inventory-search,
+.inventory-filter {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+
+/* Inventory Table */
+
+.inventory-table {
+    min-width: 1000px;
+}
+
+.inventory-table th,
+.inventory-table td {
+    padding: 13px 12px;
+    white-space: nowrap;
+}
+
+.inventory-table td:first-child {
+    font-weight: 600;
+}
+
+
+/* Action Buttons */
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.action-button {
+    padding: 6px 9px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+
+    background-color: #ffffff;
+    color: var(--text-color);
+
+    font-size: 11px;
+}
+
+.action-button:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.delete-button:hover {
+    background-color: #fde8e8;
+    color: #c52d2d;
+}
+
+
+/* Stock Status */
+
+.stock-status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.stock-status.in-stock {
+    background-color: #e6f6ec;
+    color: #208454;
+}
+
+.stock-status.low-stock {
+    background-color: #fff3d9;
+    color: #a76a00;
+}
+
+.stock-status.out-of-stock {
+    background-color: #fde8e8;
+    color: #c52d2d;
+}
+
+
+/* Expiration Date Indicators */
+
+.expiration-warning {
+    color: #a76a00;
+    font-weight: bold;
+}
+
+.expiration-danger {
+    color: #c52d2d;
+    font-weight: bold;
+}
+
+
+/* Empty Inventory Message */
+
+.empty-state {
+    padding: 35px 15px;
+    text-align: center;
+}
+
+.empty-state h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.empty-state p {
+    color: var(--muted-color);
+    font-size: 12px;
+}
+
+
+/* Inventory Table Footer */
+
+.inventory-table-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 15px;
+    color: var(--muted-color);
+    font-size: 12px;
+}
+
+
+/* Inventory Notes */
+
+.inventory-notes {
+    margin-bottom: 25px;
+}
+
+.inventory-notes h2 {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.inventory-notes ul {
+    padding-left: 20px;
+}
+
+.inventory-notes li {
+    margin-bottom: 8px;
+    color: var(--muted-color);
+    font-size: 12px;
+}
+
+
+/* Hide elements when requested by JavaScript */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================
+   INVENTORY RESPONSIVE DESIGN
+========================================= */
+
+@media screen and (max-width: 1000px) {
+
+    .inventory-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .inventory-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .inventory-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+}
+
+/* =========================================
+   DAILY SALES PAGE
+========================================= */
+
+.sales-form-card,
+.sales-history-card {
+    margin-bottom: 25px;
+}
+
+.sales-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.sales-form-grid select,
+.sales-form-grid input,
+.sales-notes textarea,
+.sales-toolbar input,
+.sales-toolbar select {
+    width: 100%;
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--text-color);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.sales-form-grid select:focus,
+.sales-form-grid input:focus,
+.sales-notes textarea:focus,
+.sales-toolbar input:focus,
+.sales-toolbar select:focus {
+    border-color: var(--primary-color);
+}
+
+.sales-form-grid input[readonly] {
+    background: #f1f5f2;
+    font-weight: 600;
+}
+
+.payment-section {
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: #f8faf8;
+}
+
+.payment-section h3 {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.payment-section > p {
+    margin-bottom: 20px;
+    color: var(--muted-color);
+    font-size: 12px;
+}
+
+.sales-notes {
+    margin-top: 20px;
+}
+
+.sales-notes textarea {
+    resize: vertical;
+}
+
+.sales-toolbar {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.sales-toolbar .form-group {
+    min-width: 0;
+}
+
+.sales-table {
+    min-width: 1000px;
+}
+
+.sales-table th,
+.sales-table td {
+    padding: 13px 12px;
+    white-space: nowrap;
+}
+
+.payment-status {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.payment-status.paid {
+    background: #e6f6ec;
+    color: #208454;
+}
+
+.payment-status.partial {
+    background: #fff3d9;
+    color: #a76a00;
+}
+
+.payment-status.utang {
+    background: #fde8e8;
+    color: #c52d2d;
+}
+
+.sales-action-button {
+    padding: 6px 9px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--text-color);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.sales-action-button:hover {
+    background: #e6f6ec;
+}
+
+@media screen and (max-width: 1000px) {
+    .sales-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sales-toolbar {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sales-form-grid,
+    .sales-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-section {
+        padding: 15px;
+    }
+}
+
+/* =========================================
+   EXPENSES PAGE
+========================================= */
+
+#expense-form {
+    width: 100%;
+}
+
+#expense-form .form-group {
+    min-width: 0;
+}
+
+#expense-form input,
+#expense-form select,
+#expense-form textarea {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+#expense-form input:focus,
+#expense-form select:focus,
+#expense-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+#expense-form .form-actions {
+    margin-top: 22px;
+}
+
+#expenses-table-body td {
+    vertical-align: middle;
+}
+
+#expenses-table-body td:nth-child(6) {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+#expenses-table-body td:nth-child(7) {
+    max-width: 220px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 600px) {
+    #expense-form .sales-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   UTANG WATCH PAGE
+========================================= */
+
+#utang-payment-form {
+    width: 100%;
+}
+
+#utang-payment-form .form-group {
+    min-width: 0;
+}
+
+#utang-payment-form input,
+#utang-payment-form select {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+#utang-payment-form input[readonly] {
+    background: #f1f5f2;
+    font-weight: 600;
+}
+
+#utang-payment-form input:focus,
+#utang-payment-form select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+#utang-payment-form .form-actions {
+    margin-top: 22px;
+}
+
+#utang-table-body td,
+#utang-history-body td {
+    vertical-align: middle;
+}
+
+#utang-table-body td:nth-child(6) {
+    font-weight: 600;
+}
+
+#utang-history-body td:nth-child(4) {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.utang-history-button {
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.utang-history-button:hover {
+    background: #e6f6ec;
+}
+
+@media screen and (max-width: 600px) {
+
+    #utang-payment-form .sales-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================
+   EXPIRY GUARD PAGE
+========================================= */
+
+.expiry-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-left: 4px solid #d97706;
+    background: #fffaf0;
+}
+
+.expiry-notice-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fef0c7;
+    color: #92400e;
+    font-weight: bold;
+}
+
+.expiry-notice h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.expiry-notice p {
+    margin: 0;
+    color: var(--muted-color);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.expiry-table {
+    min-width: 750px;
+}
+
+.expiry-table th,
+.expiry-table td {
+    padding: 14px 12px;
+}
+
+.expiry-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.expiry-status.expired {
+    background: #fde8e8;
+    color: #b42318;
+}
+
+.expiry-status.soon {
+    background: #fff0d5;
+    color: #a15c00;
+}
+
+.expiry-status.safe {
+    background: #e6f6ec;
+    color: #208454;
+}
+
+.expiry-status.none {
+    background: #edf0f4;
+    color: #526071;
+}
+
+.expiry-days-expired {
+    color: #b42318;
+    font-weight: 700;
+}
+
+.expiry-days-soon {
+    color: #a15c00;
+    font-weight: 700;
+}
+
+.expiry-days-safe {
+    color: #208454;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 600px) {
+
+    .expiry-notice {
+        padding: 15px;
+    }
+
+    .expiry-notice p {
+        font-size: 12px;
+    }
+
+}
+
+
+/* =========================================
+   FINAL MOBILE LAYOUT OVERRIDE
+   Keep this section at the VERY BOTTOM
+   ========================================= */
+
+@media screen and (max-width: 560px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        overflow-x: hidden;
+    }
+
+    .app-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        min-width: 0;
+    }
+
+    /* Reset the fixed desktop sidebar */
+    .sidebar {
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        height: auto;
+        min-height: 0;
+
+        padding: 15px;
+        overflow: visible;
+
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Keep the logo compact */
+    .logo-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-width: 0;
+        padding: 0 0 14px;
+    }
+
+    .logo-placeholder {
+        flex-shrink: 0;
+    }
+
+    .store-logo,
+    .logo-placeholder img {
+        max-width: 46px !important;
+        max-height: 46px !important;
+        object-fit: contain;
+    }
+
+    /* Let the navigation wrap onto multiple rows */
+    .navigation {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    .nav-heading {
+        width: 100%;
+        margin: 8px 0 3px;
+    }
+
+    .nav-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: auto;
+        max-width: 100%;
+        margin: 0;
+        padding: 9px 11px;
+
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    .sidebar-footer {
+        display: none;
+    }
+
+    /* Remove the desktop sidebar offset */
+    .main-content {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        margin: 0;
+        padding: 18px 14px;
+        overflow-x: hidden;
+    }
+
+    .top-header {
+        width: 100%;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .header-title {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .header-title h1 {
+        font-size: 24px;
+        overflow-wrap: anywhere;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    /* Dashboard cards */
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .summary-card {
+        min-width: 0;
+        padding: 14px 11px;
+    }
+
+    .summary-value {
+        font-size: 20px;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .content-card {
+        min-width: 0;
+        padding: 14px;
+    }
+
+    /* Forms */
+    .inventory-form-grid,
+    .sales-form-grid,
+    .sales-toolbar,
+    .inventory-toolbar {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .form-group {
+        min-width: 0;
+    }
+
+    .form-group input,
+    .inventory-search input,
+    .inventory-filter select,
+    .sales-form-grid input,
+    .sales-form-grid select,
+    .sales-toolbar input,
+    .sales-toolbar select {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .primary-button {
+        max-width: 100%;
+    }
+
+    /* Wide tables scroll inside their own containers */
+    .table-container {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .inventory-table {
+        min-width: 1000px;
+    }
+
+    .sales-table {
+        min-width: 1000px;
+    }
+
+    .expiry-table {
+        min-width: 750px;
+    }
+
+    #expense-form input,
+    #expense-form select,
+    #expense-form textarea,
+    #utang-payment-form input,
+    #utang-payment-form select {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .main-footer {
+        overflow-wrap: anywhere;
+    }
+}
+
+/* Extra-small phones */
+@media screen and (max-width: 360px) {
+
+    .main-content {
+        padding: 14px 10px;
+    }
+
+    .summary-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .header-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

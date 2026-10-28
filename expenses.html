@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Expenses | TindaTrack</title>
+
+    <!-- Connect to your existing CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <!-- LOGO SECTION -->
+            <div class="logo-container">
+
+                <div class="logo-placeholder">
+
+                    <!-- INSERT YOUR LOGO HERE -->
+                    <!-- Place your logo inside the images folder -->
+                    <!-- Example: images/logo.png -->
+
+                    <img
+                        src="TT logo.png"
+                        alt="TindaTrack Logo"
+                        class="store-logo"
+                        width="46"
+                        height="46"
+                    >
+
+                </div>
+
+                <div class="brand">
+                    <h2>TindaTrack</h2>
+                    <p>Your trusted Store Management</p>
+                </div>
+
+            </div>
+
+            <!-- NAVIGATION -->
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN MENU</p>
+
+                <a href="index.html" class="nav-link">
+                    Dashboard
+                </a>
+
+                <a href="inventory.html" class="nav-link">
+                    Inventory
+                </a>
+
+                <a href="sales.html" class="nav-link">
+                    Daily Sales
+                </a>
+
+                <a href="expenses.html" class="nav-link active">
+                    Expenses
+                </a>
+
+                <a href="utang.html" class="nav-link">
+                    Utang Watch
+                </a>
+
+                <a href="expiry.html" class="nav-link">
+                    Expiry Guard
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Bawat Benta, Bantay-Sarado!</p>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- PAGE HEADER -->
+            <header class="top-header">
+
+                <div class="header-title">
+                    <h1>Store Expenses</h1>
+
+                    <p>
+                        Track store spending and monitor daily expenses.
+                    </p>
+                </div>
+
+                <div class="header-actions">
+
+                    <span id="current-date"></span>
+
+<!-- Store Name Display -->
+<div class="store-owner">
+    <span class="owner-label">My Sari-Sari Store</span>
+</div>
+
+                </div>
+
+            </header>
+
+
+            <!-- EXPENSE SUMMARY -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+                    <div class="card-heading">
+                        <h3>Today's Expenses</h3>
+                    </div>
+
+                    <p class="summary-value" id="today-expenses">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Total expenses recorded today
+                    </p>
+                </article>
+
+
+                <article class="summary-card">
+                    <div class="card-heading">
+                        <h3>This Month</h3>
+                    </div>
+
+                    <p class="summary-value" id="month-expenses">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Total spending this month
+                    </p>
+                </article>
+
+
+                <article class="summary-card">
+                    <div class="card-heading">
+                        <h3>Total Expenses</h3>
+                    </div>
+
+                    <p class="summary-value" id="all-expenses">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        All recorded expenses
+                    </p>
+                </article>
+
+
+                <article class="summary-card">
+                    <div class="card-heading">
+                        <h3>Expense Records</h3>
+                    </div>
+
+                    <p class="summary-value" id="expense-count">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Number of recorded expenses
+                    </p>
+                </article>
+
+            </section>
+
+
+            <!-- ADD EXPENSE FORM -->
+            <section class="content-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Record an Expense</h2>
+
+                        <p>
+                            Enter the details of money spent by the store.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <form id="expense-form">
+
+                    <div class="sales-form-grid">
+
+                        <!-- EXPENSE NAME -->
+                        <div class="form-group">
+
+                            <label for="expense-name">
+                                Expense Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="expense-name"
+                                placeholder="e.g. Store Electricity"
+                                maxlength="100"
+                                required>
+
+                        </div>
+
+
+                        <!-- CATEGORY -->
+                        <div class="form-group">
+
+                            <label for="expense-category">
+                                Category
+                            </label>
+
+                            <select id="expense-category" required>
+
+                                <option value="">
+                                    Select Category
+                                </option>
+
+                                <option value="Inventory Restocking">
+                                    Inventory Restocking
+                                </option>
+
+                                <option value="Utilities">
+                                    Utilities
+                                </option>
+
+                                <option value="Transportation">
+                                    Transportation
+                                </option>
+
+                                <option value="Rent">
+                                    Rent
+                                </option>
+
+                                <option value="Store Supplies">
+                                    Store Supplies
+                                </option>
+
+                                <option value="Maintenance">
+                                    Maintenance
+                                </option>
+
+                                <option value="Employee Wages">
+                                    Employee Wages
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- AMOUNT -->
+                        <div class="form-group">
+
+                            <label for="expense-amount">
+                                Amount (₱)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="expense-amount"
+                                min="0.01"
+                                step="0.01"
+                                placeholder="0.00"
+                                required>
+
+                        </div>
+
+
+                        <!-- DATE -->
+                        <div class="form-group">
+
+                            <label for="expense-date">
+                                Expense Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="expense-date"
+                                required>
+
+                        </div>
+
+
+                        <!-- PAID TO -->
+                        <div class="form-group">
+
+                            <label for="expense-paid-to">
+                                Paid To (Optional)
+                            </label>
+
+                            <input
+                                type="text"
+                                id="expense-paid-to"
+                                maxlength="100"
+                                placeholder="Person or business">
+
+                        </div>
+
+
+                        <!-- PAYMENT METHOD -->
+                        <div class="form-group">
+
+                            <label for="expense-payment-method">
+                                Payment Method
+                            </label>
+
+                            <select
+                                id="expense-payment-method"
+                                required>
+
+                                <option value="Cash">
+                                    Cash
+                                </option>
+
+                                <option value="Other">
+                                    Other / Manually Recorded
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+                    <div class="form-group sales-notes">
+
+                        <label for="expense-description">
+                            Description (Optional)
+                        </label>
+
+                        <textarea
+                            id="expense-description"
+                            rows="3"
+                            maxlength="500"
+                            placeholder="Add notes about this expense"></textarea>
+
+                    </div>
+
+
+                    <!-- BUTTONS -->
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="primary-button">
+
+                            Save Expense
+
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="secondary-button"
+                            id="clear-expense-form">
+
+                            Clear Form
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- EXPENSE HISTORY -->
+            <section class="content-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Expense History</h2>
+
+                        <p>
+                            Search, filter, and review your store expenses.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH AND FILTER -->
+                <div class="sales-toolbar">
+
+                    <div class="form-group">
+
+                        <label for="search-expense">
+                            Search Expenses
+                        </label>
+
+                        <input
+                            type="search"
+                            id="search-expense"
+                            placeholder="Search name or recipient">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="filter-expense-category">
+                            Category
+                        </label>
+
+                        <select id="filter-expense-category">
+
+                            <option value="all">
+                                All Categories
+                            </option>
+
+                            <option value="Inventory Restocking">
+                                Inventory Restocking
+                            </option>
+
+                            <option value="Utilities">
+                                Utilities
+                            </option>
+
+                            <option value="Transportation">
+                                Transportation
+                            </option>
+
+                            <option value="Rent">
+                                Rent
+                            </option>
+
+                            <option value="Store Supplies">
+                                Store Supplies
+                            </option>
+
+                            <option value="Maintenance">
+                                Maintenance
+                            </option>
+
+                            <option value="Employee Wages">
+                                Employee Wages
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="filter-expense-date">
+                            Filter by Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="filter-expense-date">
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-container">
+
+                    <table class="sales-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Date</th>
+                                <th>Expense Name</th>
+                                <th>Category</th>
+                                <th>Paid To</th>
+                                <th>Payment Method</th>
+                                <th>Amount</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="expenses-table-body">
+                            <!-- JavaScript inserts expense records here -->
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- EMPTY STATE -->
+                <div
+                    id="empty-expenses"
+                    class="empty-state"
+                    hidden>
+
+                    <h3>No Expenses Found</h3>
+
+                    <p>
+                        Add an expense or change your search filters.
+                    </p>
+
+                </div>
+
+
+                <div class="inventory-table-footer">
+
+                    <p>
+                        Records displayed:
+                        <strong id="displayed-expenses">0</strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="main-footer">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    TindaTrack. Smart Sari-Sari Store Management System.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- EXPENSES JAVASCRIPT -->
+    <script src="js/expenses.js"></script>
+
+</body>
+
+</html>

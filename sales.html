@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Daily Sales | TindaTrack</title>
+
+    <!-- Connect to the existing CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <!-- LOGO SECTION -->
+            <div class="logo-container">
+
+                <div class="logo-placeholder">
+
+                    <!-- INSERT YOUR LOGO HERE -->
+                    <!-- Save your logo as images/logo.png -->
+
+                    <img
+                        src="TT logo.png"
+                        alt="TindaTrack Logo"
+                        class="store-logo"
+                        width="46"
+                        height="46"
+                    >
+
+                </div>
+
+                <div class="brand">
+                    <h2>TindaTrack</h2>
+                    <p>Your trusted Store Management</p>
+                </div>
+
+            </div>
+
+            <!-- NAVIGATION -->
+            <nav class="navigation">
+
+                <p class="nav-heading">MAIN MENU</p>
+
+                <a href="index.html" class="nav-link">
+                    Dashboard
+                </a>
+
+                <a href="inventory.html" class="nav-link">
+                    Inventory
+                </a>
+
+                <a href="sales.html" class="nav-link active">
+                    Daily Sales
+                </a>
+
+                <a href="expenses.html" class="nav-link">
+                    Expenses
+                </a>
+
+                <a href="utang.html" class="nav-link">
+                    Utang Watch
+                </a>
+
+                <a href="expiry.html" class="nav-link">
+                    Expiry Guard
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Bawat Benta, Bawat Piso, Bantay-Sarado!</p>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- PAGE HEADER -->
+            <header class="top-header">
+
+                <div class="header-title">
+
+                    <h1>Daily Sales</h1>
+
+                    <p>
+                        Record transactions and monitor customer payments.
+                    </p>
+
+                </div>
+
+                <div class="header-actions">
+
+                    <span id="current-date"></span>
+<!-- Store Name Display -->
+<div class="store-owner">
+    <span class="owner-label">My Sari-Sari Store</span>
+</div>
+                </div>
+
+            </header>
+
+
+            <!-- SALES SUMMARY -->
+            <section class="summary-grid">
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Today's Sales</h3>
+                    </div>
+
+                    <p class="summary-value" id="today-sales">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Total value of sales recorded today
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Cash Received Today</h3>
+                    </div>
+
+                    <p class="summary-value" id="cash-received">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Payments actually received today
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Outstanding Balance</h3>
+                    </div>
+
+                    <p class="summary-value" id="outstanding-balance">
+                        ₱0.00
+                    </p>
+
+                    <p class="card-description">
+                        Remaining amount customers owe
+                    </p>
+
+                </article>
+
+
+                <article class="summary-card">
+
+                    <div class="card-heading">
+                        <h3>Transactions Today</h3>
+                    </div>
+
+                    <p class="summary-value" id="transaction-count">
+                        0
+                    </p>
+
+                    <p class="card-description">
+                        Number of recorded transactions
+                    </p>
+
+                </article>
+
+            </section>
+
+
+            <!-- RECORD NEW SALE -->
+            <section class="content-card sales-form-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Record a Sale</h2>
+
+                        <p>
+                            Select a product and enter the transaction details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="sales-form">
+
+                    <!-- PRODUCT AND QUANTITY -->
+                    <div class="sales-form-grid">
+
+                        <div class="form-group">
+
+                            <label for="sale-product">
+                                Product
+                            </label>
+
+                            <select
+                                id="sale-product"
+                                required>
+
+                                <option value="">
+                                    Select a product
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="sale-quantity">
+                                Quantity Sold
+                            </label>
+
+                            <input
+                                type="number"
+                                id="sale-quantity"
+                                min="1"
+                                step="1"
+                                value="1"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="sale-price">
+                                Selling Price per Item (₱)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="sale-price"
+                                min="0"
+                                step="0.01"
+                                readonly
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="sale-customer">
+                                Customer Name (Optional)
+                            </label>
+
+                            <input
+                                type="text"
+                                id="sale-customer"
+                                maxlength="100"
+                                placeholder="Enter customer name">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="sale-date">
+                                Sale Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="sale-date"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="sale-payment-status">
+                                Payment Status
+                            </label>
+
+                            <select
+                                id="sale-payment-status"
+                                required>
+
+                                <option value="paid">
+                                    Fully Paid
+                                </option>
+
+                                <option value="partial">
+                                    Partial Payment
+                                </option>
+
+                                <option value="utang">
+                                    Utang / Credit Sale
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT DETAILS -->
+                    <div class="payment-section">
+
+                        <h3>Payment Details</h3>
+
+                        <p>
+                            Enter the amount the customer actually paid.
+                            All amounts are entered manually.
+                        </p>
+
+
+                        <div class="sales-form-grid">
+
+                            <div class="form-group">
+
+                                <label for="sale-total">
+                                    Total Amount (₱)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="sale-total"
+                                    min="0"
+                                    step="0.01"
+                                    value="0.00"
+                                    readonly>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="sale-amount-received">
+                                    Amount Received (₱)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="sale-amount-received"
+                                    min="0"
+                                    step="0.01"
+                                    value="0.00"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="sale-change">
+                                    Change (₱)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="sale-change"
+                                    value="0.00"
+                                    readonly>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="sale-balance">
+                                    Remaining Balance (₱)
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="sale-balance"
+                                    value="0.00"
+                                    readonly>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TRANSACTION NOTES -->
+                    <div class="form-group sales-notes">
+
+                        <label for="sale-notes">
+                            Notes (Optional)
+                        </label>
+
+                        <textarea
+                            id="sale-notes"
+                            rows="3"
+                            maxlength="500"
+                            placeholder="Enter additional transaction details"></textarea>
+
+                    </div>
+
+
+                    <!-- FORM BUTTONS -->
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="primary-button">
+
+                            Save Sale
+
+                        </button>
+
+                        <button
+                            type="reset"
+                            class="secondary-button"
+                            id="clear-sale-form">
+
+                            Clear Form
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- SALES HISTORY -->
+            <section class="content-card sales-history-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Sales History</h2>
+
+                        <p>
+                            Review recorded transactions and payment balances.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH AND FILTER -->
+                <div class="sales-toolbar">
+
+                    <div class="form-group">
+
+                        <label for="search-sale">
+                            Search Sales
+                        </label>
+
+                        <input
+                            type="search"
+                            id="search-sale"
+                            placeholder="Search product or customer">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="filter-sale-status">
+                            Payment Status
+                        </label>
+
+                        <select id="filter-sale-status">
+
+                            <option value="all">
+                                All Transactions
+                            </option>
+
+                            <option value="paid">
+                                Fully Paid
+                            </option>
+
+                            <option value="partial">
+                                Partial Payment
+                            </option>
+
+                            <option value="utang">
+                                Utang / Credit Sale
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="filter-sale-date">
+                            Filter by Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="filter-sale-date">
+
+                    </div>
+
+                </div>
+
+
+                <!-- SALES TABLE -->
+                <div class="table-container">
+
+                    <table class="sales-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Date</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Customer</th>
+                                <th>Total</th>
+                                <th>Received</th>
+                                <th>Balance</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="sales-table-body">
+
+                            <!-- JavaScript inserts sales here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    id="empty-sales"
+                    class="empty-state"
+                    hidden>
+
+                    <h3>No Sales Found</h3>
+
+                    <p>
+                        Record a sale or change your search filters.
+                    </p>
+
+                </div>
+
+
+                <div class="inventory-table-footer">
+
+                    <p>
+                        Transactions displayed:
+                        <strong id="displayed-sales">0</strong>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="main-footer">
+
+                <p>
+                    &copy;
+                    <span id="current-year"></span>
+                    TindaTrack. Smart Sari-Sari Store Management System.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- DAILY SALES JAVASCRIPT -->
+    <script src="js/sales.js"></script>
+
+</body>
+
+</html>
